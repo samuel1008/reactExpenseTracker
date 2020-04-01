@@ -2,15 +2,19 @@ import React from 'react';
 
 import { Form as BTForm, FormGroup, Input, Label, Col, Button } from 'reactstrap';
 
-const Form = () => (
 
-  <BTForm style={{ margin: 10 }}>
+
+
+
+const Form = ({ name, amount, handleName, handleAmount, handleSubmitForm }) => (
+
+  <BTForm style={{ margin: 10 }} onSubmit={handleSubmitForm}>
     <FormGroup className="row">
       <Label className="exampleEmail" sm={2}>
         Name of Expense
       </Label>
       <Col sm={4}>
-        <Input type="text" name="name" id="expenseName" placeholder="Name of Expense?" />
+        <Input type="text" name="name" id="expenseName" placeholder="Name of Expense?" value={name} onChange={handleName} />
       </Col>
     </FormGroup>
     <FormGroup className="row">
@@ -18,7 +22,7 @@ const Form = () => (
       $Amount
     </Label>
     <Col sm={4}>
-    <Input type="number" name="amount" id="expenseAmount" placeholder="0.00" />
+    <Input type="number" name="amount" id="expenseAmount" placeholder="0.00" value={amount} onChange={handleAmount}/>
     </Col>
     </FormGroup>
     <Button type="submit" color="primary">Add</Button>
