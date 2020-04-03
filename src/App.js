@@ -33,6 +33,10 @@ const App = () => {
     setAmount(e.target.value)
   }
 
+  const handleClearExpenses = () => {
+    setExpenses([])
+  }
+
   const handleSubmitForm = event => {
     event.preventDefault()
   
@@ -75,7 +79,7 @@ const App = () => {
           </p>
         </div>
 
-        <Form name={name} amount={amount} handleName={handleName} handleAmount={handleAmount} handleSubmitForm={handleSubmitForm} />
+        <Form name={name} amount={amount} handleName={handleName} handleAmount={handleAmount} handleSubmitForm={handleSubmitForm} handleClearExpenses={handleClearExpenses} />
         <List expenses={expenses} />  
       </Jumbotron>
     </Container>

@@ -3,7 +3,7 @@ import React from 'react';
 import { Form as BTForm, FormGroup, Input, Label, Col, Button } from 'reactstrap';
 
 
-const Form = ({ name, amount, handleName, handleAmount, handleSubmitForm }) => (
+const Form = ({ name, amount, handleName, handleAmount, handleSubmitForm, handleClearExpenses }) => (
 
 
   <BTForm style={{ margin: 10 }} onSubmit={handleSubmitForm}>
@@ -24,6 +24,10 @@ const Form = ({ name, amount, handleName, handleAmount, handleSubmitForm }) => (
     </Col>
     </FormGroup>
     <Button type="submit" color="primary">Add</Button>
+    {' '}
+    <Button type="submit" color="danger" onClick={handleClearExpenses}>
+      Reset
+    </Button>
   </BTForm>
   )
 
