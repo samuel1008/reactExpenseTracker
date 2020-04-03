@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Jumbotron } from 'reactstrap';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Logo from './logo.svg'
 
 //import component
@@ -15,9 +15,13 @@ const App = () => {
 
   //useState hook
   const [ expenses, setExpenses ] = useState(ALL_EXPENSES)
-  
   const [ name, setName ] = useState('')
   const [ amount, setAmount ] = useState('')
+
+  //useEffect hook
+  useEffect(() => {
+    localStorage.setItem('expenses', JSON.stringify(expenses))
+  }, [expenses])
 
   const handleName = (e) => {
     console.log('Name is ', e.target.value)
@@ -54,7 +58,7 @@ const App = () => {
     <Container>
       <Jumbotron fluid>
 
-        <h3 className="display-6" className="text-center">
+        <h3 className="display-6 text-center">
           Expense Tracker App
           <img src={Logo} style={{ width: 50, height: 50 }} alt="react-logo" />
         </h3>
