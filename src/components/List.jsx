@@ -5,8 +5,8 @@ const List = ({ expenses }) => (
 
   <div>
     <ListGroup>
-      {expenses.map(item => (
-        <ListGroupItem key={item.id}>
+      {expenses.map((item, id) => (
+        <ListGroupItem key={id}>
           {item.name} - $ {item.amount}
         </ListGroupItem>
       ))}

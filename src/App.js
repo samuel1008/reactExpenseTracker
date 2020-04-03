@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container, Jumbotron } from 'reactstrap';
+import { Container, Jumbotron } from 'reactstrap';
 import { useState } from 'react';
 import Logo from './logo.svg'
 
@@ -7,27 +7,26 @@ import Logo from './logo.svg'
 import Form from './components/Form';
 import List from './components/List';
 
-const ALL_EXPENSES = [
-  { id: 1, name: 'Buy a book', amount: 20 },
-  { id: 2, name: 'Buy a milk', amount: 5 },
-  { id: 3, name: 'Book a flight ticket', amount: 225 }
-]
+const ALL_EXPENSES = localStorage.getItem('expenses')
+? JSON.parse(localStorage.getItem('expenses'))
+: []
 
 const App = () => {
 
   //useState hook
   const [ expenses, setExpenses ] = useState(ALL_EXPENSES)
+  
   const [ name, setName ] = useState('')
   const [ amount, setAmount ] = useState('')
 
-  const handleName = event => {
-    console.log('Name ', event.target.value)
-    setName(event.target.value)
+  const handleName = (e) => {
+    console.log('Name is ', e.target.value)
+    setName(e.target.value)
   }
-  
-  const handleAmount = event => {
-    console.log('Amount ', event.target.value)
-    setAmount(event.target.value)
+
+  const handleAmount = (e) => {
+    console.log('Amount is ', e.target.value)
+    setAmount(e.target.value)
   }
 
   const handleSubmitForm = event => {
@@ -52,15 +51,15 @@ const App = () => {
 
 
   return (
-    <Container className="text-center">
+    <Container>
       <Jumbotron fluid>
 
-        <h3 className="display-6">
+        <h3 className="display-6" className="text-center">
           Expense Tracker App
           <img src={Logo} style={{ width: 50, height: 50 }} alt="react-logo" />
         </h3>
 
-        <div>
+        <div className='text-center'>
           <p>
             Total Expense: {' '}
             <span className="text-success">
@@ -72,9 +71,8 @@ const App = () => {
           </p>
         </div>
 
-        <Form />
+        <Form name={name} amount={amount} handleName={handleName} handleAmount={handleAmount} handleSubmitForm={handleSubmitForm} />
         <List expenses={expenses} />  
-
       </Jumbotron>
     </Container>
   )

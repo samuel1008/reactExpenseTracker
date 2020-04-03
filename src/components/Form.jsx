@@ -3,10 +3,8 @@ import React from 'react';
 import { Form as BTForm, FormGroup, Input, Label, Col, Button } from 'reactstrap';
 
 
-
-
-
 const Form = ({ name, amount, handleName, handleAmount, handleSubmitForm }) => (
+
 
   <BTForm style={{ margin: 10 }} onSubmit={handleSubmitForm}>
     <FormGroup className="row">
@@ -27,6 +25,7 @@ const Form = ({ name, amount, handleName, handleAmount, handleSubmitForm }) => (
     </FormGroup>
     <Button type="submit" color="primary">Add</Button>
   </BTForm>
-)
+  )
+
 
 export default Form;
